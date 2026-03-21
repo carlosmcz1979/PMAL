@@ -17,13 +17,17 @@ import {
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/estabelecimento/novo', label: 'Estabelecimentos', icon: Building2 },
-  { href: '/licenca/gerenciar', label: 'Licenças', icon: FileCheck },
-  { href: '/inspecao/nova', label: 'Inspeções', icon: ClipboardCheck },
-  { href: '/relatorio', label: 'Relatórios', icon: BarChart3 },
-  { href: '/admin', label: 'Administração', icon: ShieldCheck },
+  { href: '/licenca/gerenciar', label: 'Licencas', icon: FileCheck },
+  { href: '/inspecao/nova', label: 'Inspecoes', icon: ClipboardCheck },
+  { href: '/relatorio', label: 'Relatorios', icon: BarChart3 },
+  { href: '/admin', label: 'Administracao', icon: ShieldCheck },
 ]
 
-export default function Sidebar() {
+interface SidebarProps {
+  onNavigate?: () => void
+}
+
+export default function Sidebar({ onNavigate }: SidebarProps) {
   const pathname = usePathname()
   const router = useRouter()
 
@@ -37,11 +41,15 @@ export default function Sidebar() {
     return pathname.startsWith(href.split('/').slice(0, 2).join('/'))
   }
 
+  const handleClick = () => {
+    if (onNavigate) onNavigate()
+  }
+
   return (
     <aside className="sidebar">
       {/* Brand */}
       <div className="sidebar-brand">
-        <Link href="/dashboard" className="flex items-center gap-3 no-underline">
+        <Link href="/dashboard" className="flex items-center gap-3 no-underline" onClick={handleClick}>
           <div
             className="flex items-center justify-center rounded-xl"
             style={{
@@ -58,13 +66,13 @@ export default function Sidebar() {
               className="text-base font-bold leading-tight"
               style={{ color: 'var(--text-primary)' }}
             >
-              VISA Maceió
+              VISA Maceio
             </h2>
             <p
               className="text-xs"
               style={{ color: 'var(--text-muted)' }}
             >
-              Licenciamento Sanitário
+              Licenciamento Sanitario
             </p>
           </div>
         </Link>
@@ -86,6 +94,7 @@ export default function Sidebar() {
               key={item.href}
               href={item.href}
               className={`sidebar-nav-link ${active ? 'active' : ''}`}
+              onClick={handleClick}
             >
               <Icon size={20} className="nav-icon" />
               <span>{item.label}</span>

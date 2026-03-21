@@ -572,14 +572,148 @@ body {
 }
 
 /* ==============================================
-   RESPONSIVE
+   RESPONSIVE - TABLET (max 1024px)
    ============================================== */
 
 @media (max-width: 1024px) {
   :root {
     --sidebar-width: 0px;
   }
+
   .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    width: 280px;
+    z-index: 100;
+  }
+
+  .sidebar.open,
+  .sidebar-mobile-open .sidebar {
+    transform: translateX(0);
+  }
+
+  .sidebar-overlay {
     display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 90;
+  }
+
+  .sidebar-overlay.open {
+    display: block;
+  }
+
+  .page-header {
+    padding: 1.25rem 1rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.35rem;
+  }
+
+  .page-content {
+    padding: 1.25rem 1rem;
+  }
+}
+
+/* ==============================================
+   RESPONSIVE - MOBILE (max 640px)
+   ============================================== */
+
+@media (max-width: 640px) {
+  .page-header {
+    padding: 1rem 0.75rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.15rem;
+  }
+
+  .page-header p {
+    font-size: 0.8125rem;
+  }
+
+  .page-content {
+    padding: 1rem 0.75rem;
+  }
+
+  .kpi-card {
+    padding: 1rem;
+  }
+
+  .kpi-card .kpi-value {
+    font-size: 1.5rem;
+  }
+
+  .kpi-card .kpi-label {
+    font-size: 0.6875rem;
+  }
+
+  .kpi-card .kpi-icon {
+    display: none;
+  }
+
+  .glass-card-static {
+    padding: 1rem;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-success,
+  .btn-danger {
+    padding: 0.625rem 1rem;
+    font-size: 0.8125rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .input-premium {
+    padding: 0.625rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .badge {
+    font-size: 0.6875rem;
+    padding: 0.125rem 0.5rem;
+  }
+
+  .table-premium th,
+  .table-premium td {
+    padding: 0.5rem;
+    font-size: 0.8125rem;
+  }
+}
+
+/* ==============================================
+   HAMBURGER MENU BUTTON
+   ============================================== */
+
+.hamburger-btn {
+  display: none;
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 80;
+  box-shadow: 0 4px 15px rgba(14, 116, 110, 0.4);
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.hamburger-btn:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 1024px) {
+  .hamburger-btn {
+    display: flex;
   }
 }
