@@ -12,6 +12,7 @@ import {
   ShieldCheck,
   LogOut,
   Activity,
+  Plug,
 } from 'lucide-react'
 
 const navItems = [
@@ -20,6 +21,7 @@ const navItems = [
   { href: '/licenca/gerenciar', label: 'Licencas', icon: FileCheck },
   { href: '/inspecao/nova', label: 'Inspecoes', icon: ClipboardCheck },
   { href: '/relatorio', label: 'Relatorios', icon: BarChart3 },
+  { href: '/integracoes', label: 'Integracoes', icon: Plug },
   { href: '/admin', label: 'Administracao', icon: ShieldCheck },
 ]
 
