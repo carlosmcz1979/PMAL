@@ -215,19 +215,20 @@ export default function Login() {
               </button>
             </form>
 
-            <p
-              className="text-center mt-6 text-sm"
-              style={{ color: 'var(--text-secondary)' }}
-            >
-              Não tem conta?{' '}
-              <Link
-                href="/register"
-                className="font-semibold hover:underline"
-                style={{ color: 'var(--primary-400)' }}
-              >
-                Registre-se
-              </Link>
-            </p>
+            <div className="text-center mt-6 space-y-2">
+              <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+                Servidor público?{' '}
+                <Link href="/register" className="font-semibold hover:underline" style={{ color: 'var(--primary-400)' }}>
+                  Registre-se aqui
+                </Link>
+              </p>
+              <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+                Contribuinte?{' '}
+                <Link href="/contribuinte/registro" className="font-semibold hover:underline" style={{ color: 'var(--primary-400)' }}>
+                  Crie sua conta
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
       </div>

@@ -14,6 +14,8 @@ import {
   Briefcase,
   FileCheck,
   ClipboardCheck,
+  Pencil,
+  History,
 } from 'lucide-react'
 
 interface Licenca {
@@ -112,9 +114,27 @@ export default function DetalhesEstabelecimento() {
       title={estabelecimento.nome}
       subtitle={`CNPJ: ${estabelecimento.cnpj}`}
       actions={
-        <Link href="/dashboard" className="btn-secondary" style={{ textDecoration: 'none' }}>
-          ← Voltar
-        </Link>
+        <div className="flex gap-2">
+          <Link
+            href={`/estabelecimento/${id}/editar`}
+            className="btn-primary"
+            style={{ textDecoration: 'none', padding: '0.5rem 1rem' }}
+          >
+            <Pencil size={16} />
+            Editar
+          </Link>
+          <Link
+            href={`/estabelecimento/${id}/historico`}
+            className="btn-secondary"
+            style={{ textDecoration: 'none', padding: '0.5rem 1rem' }}
+          >
+            <History size={16} />
+            Histórico
+          </Link>
+          <Link href="/dashboard" className="btn-secondary" style={{ textDecoration: 'none' }}>
+            ← Voltar
+          </Link>
+        </div>
       }
     >
       <div className="space-y-8">

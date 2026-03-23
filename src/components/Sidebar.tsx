@@ -13,16 +13,18 @@ import {
   LogOut,
   Activity,
   Plug,
+  Users,
 } from 'lucide-react'
 
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/estabelecimento/novo', label: 'Estabelecimentos', icon: Building2 },
-  { href: '/licenca/gerenciar', label: 'Licencas', icon: FileCheck },
-  { href: '/inspecao/nova', label: 'Inspecoes', icon: ClipboardCheck },
-  { href: '/relatorio', label: 'Relatorios', icon: BarChart3 },
-  { href: '/integracoes', label: 'Integracoes', icon: Plug },
-  { href: '/admin', label: 'Administracao', icon: ShieldCheck },
+  { href: '/licenca/gerenciar', label: 'Licenças', icon: FileCheck },
+  { href: '/inspecao/nova', label: 'Inspeções', icon: ClipboardCheck },
+  { href: '/relatorio', label: 'Relatórios', icon: BarChart3 },
+  { href: '/integracoes', label: 'Integrações', icon: Plug },
+  { href: '/admin', label: 'Administração', icon: ShieldCheck },
+  { href: '/admin/usuarios', label: 'Usuários', icon: Users },
 ]
 
 interface SidebarProps {
@@ -39,8 +41,7 @@ export default function Sidebar({ onNavigate }: SidebarProps) {
   }
 
   const isActive = (href: string) => {
-    if (href === '/dashboard') return pathname === '/dashboard'
-    return pathname.startsWith(href.split('/').slice(0, 2).join('/'))
+    return pathname === href || (href !== '/admin' && href !== '/dashboard' && pathname.startsWith(href + '/'))
   }
 
   const handleClick = () => {
@@ -68,13 +69,13 @@ export default function Sidebar({ onNavigate }: SidebarProps) {
               className="text-base font-bold leading-tight"
               style={{ color: 'var(--text-primary)' }}
             >
-              VISA Maceio
+              VISA Maceió
             </h2>
             <p
               className="text-xs"
               style={{ color: 'var(--text-muted)' }}
             >
-              Licenciamento Sanitario
+              Licenciamento Sanitário
             </p>
           </div>
         </Link>
